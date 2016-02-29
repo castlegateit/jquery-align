@@ -66,7 +66,7 @@
         var object = this;
         var settings = $.extend({
             timeout: 100,
-        });
+        }, options);
 
         // If there are less than two elements, do nothing
         if (object.length < 2) {
