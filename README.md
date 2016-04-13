@@ -14,6 +14,18 @@ $('.foo').uniformify({
 });
 ~~~
 
+You can reset the aligned elements to their original state:
+
+~~~ javascript
+$('.foo').uniformify('reset');
+~~~
+
+If you have some change to the aligned elements, including adding or removing elements, you can re-align them:
+
+~~~ javascript
+$('.foo').uniformify('update');
+~~~
+
 ## Changes since version 2.0 ##
 
 In previous versions of the plugin, `uniformify()` was applied to the sibling elements to be aligned. Since version 2.0, `uniformify()` is applied to the parent element and the `selector` option can be used to refine the collection of sibling elements to align.

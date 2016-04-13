@@ -1,5 +1,5 @@
 /**
- * jQuery Uniformify v2.0
+ * jQuery Uniformify v2.1
  * http://github.com/castlegateit/jquery-uniformify
  *
  * Copyright (c) 2016 Castlegate IT
@@ -20,6 +20,12 @@
     // Resize timer
     var resizeTimer;
 
+    // Map commands to methods
+    var commands = {
+        update: 'update',
+        reset: 'reset'
+    };
+
     // Constructor
     var Plugin = function(element, options) {
         this.element = element;
@@ -36,6 +42,7 @@
         var _this = this;
 
         this.select();
+        this.save();
 
         // Align boxes when the complete page has loaded and when the window has
         // finished resizing. It's no good trying to align everything on
@@ -49,6 +56,33 @@
     // Select boxes to align
     Plugin.prototype.select = function() {
         this.boxes = $(this.element).find(this.settings.selector);
+    };
+
+    // Save initial styles
+    Plugin.prototype.save = function() {
+        this.boxes.each(function(i, boxElement) {
+            var box = $(boxElement);
+
+            if (box.attr('style') && !box.data('style')) {
+                box.data('style', box.attr('style'));
+            }
+        });
+    };
+
+    // Reset boxes to their initial styles
+    Plugin.prototype.reset = function() {
+        this.naturalize();
+        this.boxes.each(function(i, boxElement) {
+            var box = $(boxElement);
+
+            // Restore original style attribute
+            if (box.data('style')) {
+                return box.attr('style', box.data('style'));
+            }
+
+            // Remove style attribute added by this plugin
+            box.removeAttr('style');
+        });
     };
 
     // Set all boxes to their natural height
@@ -103,6 +137,7 @@
     // Update selection and re-align all boxes
     Plugin.prototype.update = function() {
         this.select();
+        this.save();
         this.align();
     };
 
@@ -110,6 +145,18 @@
     $.fn[pluginName] = function(options) {
         return this.each(function() {
             var instance = $.data(this, pluginName);
+
+            // Named commands
+            if (typeof options === 'string') {
+                if (
+                    typeof instance === 'undefined' ||
+                    typeof commands[options] === 'undefined'
+                ) {
+                    return false;
+                }
+
+                return instance[commands[options]]();
+            }
 
             // Create instance
             if (!instance) {
