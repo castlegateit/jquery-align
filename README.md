@@ -1,13 +1,19 @@
 # jQuery Uniformify #
 
-A jQuery plugin to make sibling elements that are arranged in rows the same height, so they line up in a nice, uniform grid. Works with responsive designs, even when the number of elements in each "row" changes via media queries.
+A jQuery plugin to make child elements that are arranged in rows the same height, so they line up in a nice, uniform grid. Works with responsive designs, even when the number of elements in each "row" changes via media queries. For example, the following will align rows of elements that are children of `<div class="foo"></div>`:
 
-    $('.foo').uniformify();
+~~~ javascript
+$('.foo').uniformify();
+~~~
 
-The elements to be lined up must be sibling elements in the DOM and must have the same top offset (i.e. be the same distance from the top of the page) to be considered part of the same row. By default, the elements will be re-aligned on page load and 100&nbsp;ms after each window resize. You can change this interval by setting the `timeout` option:
+By default, the elements to be lined up must be sibling elements in the DOM and must have the same top offset (i.e. be the same distance from the top of the page) to be considered part of the same row. You can use a different jQuery selector to find elements within the parent element. For example, the following will only align elements with the `bar` class:
 
-    $('.foo').uniformify({
-        timeout: 50
-    });
+~~~ javascript
+$('.foo').uniformify({
+    selector: '> .bar'
+});
+~~~
 
-In the above example, the elements will be re-aligned 50&nbsp;ms after the window has been resized.
+## Changes since version 2.0 ##
+
+In previous versions of the plugin, `uniformify()` was applied to the sibling elements to be aligned. Since version 2.0, `uniformify()` is applied to the parent element and the `selector` option can be used to refine the collection of sibling elements to align.
