@@ -42,7 +42,6 @@
         var _this = this;
 
         this.select();
-        this.save();
 
         // Align boxes when the complete page has loaded and when the window has
         // finished resizing. It's no good trying to align everything on
@@ -56,6 +55,7 @@
     // Select boxes to align
     Plugin.prototype.select = function() {
         this.boxes = $(this.element).find(this.settings.selector);
+        this.save();
     };
 
     // Save initial styles
@@ -137,7 +137,6 @@
     // Update selection and re-align all boxes
     Plugin.prototype.update = function() {
         this.select();
-        this.save();
         this.align();
     };
 
