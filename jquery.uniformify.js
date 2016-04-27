@@ -119,6 +119,10 @@
                 var sibling = $(siblingElement);
                 var height = sibling.height();
 
+                if (sibling.css('box-sizing') === 'border-box') {
+                    height = sibling.outerHeight();
+                }
+
                 if (height > max) {
                     max = height;
                 }
@@ -129,7 +133,13 @@
 
             // Set all elements to same height as tallest element in row
             row.each(function(i, siblingElement) {
-                $(siblingElement).height(max);
+                var sibling = $(siblingElement);
+
+                if (sibling.css('box-sizing') === 'border-box') {
+                    return sibling.outerHeight(max);
+                }
+
+                return sibling.height(max);
             });
         });
     };
