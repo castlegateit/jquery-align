@@ -13,6 +13,7 @@
 
     // Name and default settings
     var pluginName = 'uniformify';
+    var resizeName = pluginName + 'ResizeDone';
     var defaults = {
         selector: '> *'
     };
@@ -47,7 +48,7 @@
         // finished resizing. It's no good trying to align everything on
         // document ready because you might still be waiting for CSS that will
         // affect the height of the boxes.
-        $(window).on('load resizeDone', function() {
+        $(window).on('load ' + resizeName, function() {
             _this.align();
         });
     };
@@ -179,7 +180,7 @@
         window.clearTimeout(resizeTimer);
 
         resizeTimer = window.setTimeout(function() {
-            $(window).trigger('resizeDone');
+            $(window).trigger(resizeName);
         }, 50);
     });
 })(jQuery);
