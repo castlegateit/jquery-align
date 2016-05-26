@@ -1,5 +1,5 @@
 /**
- * jQuery Uniformify v2.1
+ * jQuery Uniformify v2.2
  * http://github.com/castlegateit/jquery-uniformify
  *
  * Copyright (c) 2016 Castlegate IT
@@ -118,11 +118,7 @@
             // Find the tallest element in the row
             row.each(function(i, siblingElement) {
                 var sibling = $(siblingElement);
-                var height = sibling.height();
-
-                if (sibling.css('box-sizing') === 'border-box') {
-                    height = sibling.outerHeight();
-                }
+                var height = sibling.outerHeight();
 
                 if (height > max) {
                     max = height;
@@ -134,13 +130,7 @@
 
             // Set all elements to same height as tallest element in row
             row.each(function(i, siblingElement) {
-                var sibling = $(siblingElement);
-
-                if (sibling.css('box-sizing') === 'border-box') {
-                    return sibling.outerHeight(max);
-                }
-
-                return sibling.height(max);
+                return $(siblingElement).outerHeight(max);
             });
         });
     };
