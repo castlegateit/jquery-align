@@ -51,6 +51,10 @@
         $(window).on('load ' + resizeName, function() {
             _this.align();
         });
+
+        // Attempt to align the boxes immediately as well, in case we are
+        // running on window load instead of on DOM content ready.
+        _this.align();
     };
 
     // Select boxes to align
