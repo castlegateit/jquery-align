@@ -1,5 +1,5 @@
 /**
- * jQuery Uniformify v2.2
+ * jQuery Uniformify v2.3
  * http://github.com/castlegateit/jquery-uniformify
  *
  * Copyright (c) 2016 Castlegate IT
@@ -15,6 +15,7 @@
     var pluginName = 'uniformify';
     var resizeName = pluginName + 'ResizeDone';
     var defaults = {
+        bottom: false,
         selector: '> *'
     };
 
@@ -99,7 +100,8 @@
 
     // Align boxes
     Plugin.prototype.align = function() {
-        var boxes = this.boxes;
+        var _this = this;
+        var boxes = _this.boxes;
         var done = [];
 
         // Reset box heights
@@ -111,7 +113,16 @@
 
             // Assemble collection of elements in the same row
             var row = box.add(boxes.not(box).filter(function() {
-                return box.offset().top === $(this).offset().top;
+                var heightA = box.offset().top;
+                var heightB = $(this).offset().top;
+
+                // Align to bottom edge instead?
+                if (_this.settings.bottom) {
+                    heightA += box.height();
+                    heightB += $(this).height();
+                }
+
+                return heightA === heightB;
             }));
 
             // If only box in row or already resized, do nothing

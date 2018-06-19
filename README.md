@@ -14,6 +14,14 @@ $('.foo').uniformify({
 });
 ~~~
 
+You can also choose to align elements along their bottom edges instead of along their top edges (i.e. top offset + height instead of just top offset):
+
+~~~ javascript
+$('.foo').uniformify({
+    bottom: true
+});
+~~~
+
 You can reset the aligned elements to their original state:
 
 ~~~ javascript
