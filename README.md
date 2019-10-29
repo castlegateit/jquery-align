@@ -1,4 +1,4 @@
-# jQuery Uniformify #
+# jQuery Uniformify
 
 A jQuery plugin to make child elements that are arranged in rows the same height, so they line up in a nice, uniform grid. Works with responsive designs, even when the number of elements in each "row" changes via media queries. For example, the following will align rows of elements that are children of `<div class="foo"></div>`:
 
@@ -34,7 +34,13 @@ If you have some change to the aligned elements, including adding or removing el
 $('.foo').uniformify('update');
 ~~~
 
-## Changes since version 2.0 ##
+## Install
+
+Install with npm:
+
+    npm install --save-dev github:castlegateit/jquery-uniformify
+
+## Changes since version 2.0
 
 In previous versions of the plugin, `uniformify()` was applied to the sibling elements to be aligned. Since version 2.0, `uniformify()` is applied to the parent element and the `selector` option can be used to refine the collection of sibling elements to align.
 
