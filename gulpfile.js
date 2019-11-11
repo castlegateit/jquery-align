@@ -4,7 +4,7 @@
 'use strict';
 
 // Configuration
-const name = 'jquery.uniformify.js';
+const name = 'align.js';
 const src = './src/*.js';
 const dest = './dist';
 

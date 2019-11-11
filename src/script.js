@@ -1,5 +1,5 @@
 // Name and default settings
-var pluginName = 'uniformify';
+var pluginName = 'align';
 var resizeName = pluginName + 'ResizeDone';
 var defaults = {
     bottom: false,
