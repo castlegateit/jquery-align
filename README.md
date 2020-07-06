@@ -38,7 +38,7 @@ $('.foo').align('update');
 
 Install with npm:
 
-    npm install --save-dev castlegate-align
+    npm install --save-dev @castlegate/jquery-align
 
 ## Changes since version 2.0
 
