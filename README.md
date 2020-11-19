@@ -1,5 +1,9 @@
 # Align
 
+**Support for flexbox in all major browsers means that this plugin is now obsolete. Please use [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) instead.**
+
+---
+
 A jQuery plugin to make child elements that are arranged in rows the same height, so they line up in a nice, uniform grid. Works with responsive designs, even when the number of elements in each "row" changes via media queries. For example, the following will align rows of elements that are children of `<div class="foo"></div>`:
 
 ~~~ javascript
